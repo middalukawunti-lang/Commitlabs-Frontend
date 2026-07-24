@@ -1,3 +1,4 @@
+// @vitest-environment happy-dom
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { HeroSection } from '@/src/components/landing-page/sections/HeroSection';

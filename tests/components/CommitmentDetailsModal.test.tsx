@@ -1,6 +1,4 @@
-/**
- * @vitest-environment happy-dom
- */
+// @vitest-environment happy-dom
 
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";

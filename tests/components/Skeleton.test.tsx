@@ -1,3 +1,4 @@
+// @vitest-environment happy-dom
 import { render, screen } from '@testing-library/react';
 import { Skeleton, CommitmentCardSkeleton, MarketplaceCardSkeleton, HealthChartSkeleton } from '@/components/Skeleton';
 import HealthMetricsSkeleton from '@/components/HealthMetricsSkeleton';

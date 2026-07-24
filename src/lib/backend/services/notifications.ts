@@ -1,5 +1,5 @@
 import { getMockData } from '@/lib/backend/mockDb';
-import type { Notification, Commitment, Attestation } from '@/lib/types/domain';
+import type { Notification } from '@/lib/types/domain';
 // import { getUserCommitmentsFromChain } from './contracts'; // TODO: migration path
 
 export async function getUserNotifications(ownerAddress: string): Promise<Notification[]> {

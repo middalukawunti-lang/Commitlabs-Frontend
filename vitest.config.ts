@@ -11,6 +11,17 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./tests/setup/vitest.setup.ts'],
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    /**
+     * Per-file Vitest environments. Component-render tests must run in a
+     * DOM-like environment; everywhere else we want the default Node env
+     * so process.env, fs, and crypto behave naturally. A few `.tsx` files
+     * still ship with an explicit `// @vitest-environment happy-dom` pragma —
+     * that's belt-and-suspenders and harmless.
+     */
+    environmentMatchGlobs: [
+      ['src/components/**/__tests__/**/*.{ts,tsx}', 'happy-dom'],
+      ['tests/components/**/*.{ts,tsx}', 'happy-dom'],
+    ],
     coverage: {
       all: true,
       provider: 'v8',

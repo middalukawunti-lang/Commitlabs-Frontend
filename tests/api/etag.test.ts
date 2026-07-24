@@ -73,14 +73,18 @@ describe('ETag utilities', () => {
       expect(etag).toMatch(/^"[a-f0-9]{64}"$/);
     });
 
-    it('should be sensitive to property order in objects', () => {
+    it('should be insensitive to property order in objects (canonicalization)', () => {
       const data1 = { a: 1, b: 2 };
       const data2 = { b: 2, a: 1 };
-      
+
       const etag1 = generateETag(data1);
       const etag2 = generateETag(data2);
-      
-      expect(etag1).not.toBe(etag2);
+
+      // ETags canonicalize object property order so that equivalent
+      // payloads always produce the same ETag (RFC 7232 semantics for
+      // cache validation). If a future change makes order significant,
+      // update this expectation deliberately, not by accident.
+      expect(etag1).toBe(etag2);
     });
 
     it('should handle empty objects', () => {
